@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Radioman2Test {
-    Radioman2 radio = new Radioman2();
+    Radioman2 radio = new Radioman2(10);
+    Radioman2 radio2 = new Radioman2();
 
     @Test
     void shouldChangeStation() {
@@ -28,9 +29,9 @@ class Radioman2Test {
 
     @Test
     void shouldNextStation() {
-        radio.setCurrentStation(6);
+        radio.setCurrentStation(9);
         radio.nextStation();
-        assertEquals(7, radio.getCurrentStation());
+        assertEquals(0, radio.getCurrentStation());
     }
 
     @Test
@@ -49,9 +50,9 @@ class Radioman2Test {
 
     @Test
     void shouldPrevStation() {
-        radio.setCurrentStation(4);
+        radio.setCurrentStation(9);
         radio.previousStation();
-        assertEquals(3, radio.getCurrentStation());
+        assertEquals(8, radio.getCurrentStation());
     }
 
     @Test
@@ -84,23 +85,23 @@ class Radioman2Test {
 
     @Test
     void shouldOverMaxVolume1() {
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     @Test
     void shouldOverMaxVolume2() {
-        radio.setCurrentVolume(11);
+        radio.setCurrentVolume(101);
         radio.increaseVolume();
         assertEquals(1, radio.getCurrentVolume());
     }
 
     @Test
     void shouldDecreaseVolume() {
-        radio.setCurrentVolume(6);
+        radio.setCurrentVolume(60);
         radio.decreaseVolume();
-        assertEquals(5, radio.getCurrentVolume());
+        assertEquals(59, radio.getCurrentVolume());
     }
 
     @Test
